@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two box</title>
+    <style>
+      #box-1 {
+        height: 100px;
+        width: 100px;
+        background-color: #a146f7;
+      }
+      #box-2 {
+        height: 100px;
+        width: 100px;
+        background-color: #e8a12e;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Two Box</h1>
+    <div id="box-1"></div>
+    <div id="box-2"></div>
+    <script>
+      // Create 2 boxes of any size. One box should display the width of the window and right-click should be disabled(no menu should be shown on right click)
+      document.getElementById('box-1').innerHTML = window.innerWidth;
+      document.getElementById('box-1').addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        alert('Right click is disabled');
+      });
+      // The other box should display the height of the window and left-click should be disabled. Give an alert if attempted.
+      document.getElementById('box-2').innerHTML = window.innerHeight;
+      document.getElementById('box-2').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Left click is disabled');
+      });
+
+      //The height and width must be updated as the window is resized.
+      window.addEventListener('resize', () => {
+        document.getElementById('box-1').innerHTML = window.innerWidth;
+        document.getElementById('box-2').innerHTML = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>
