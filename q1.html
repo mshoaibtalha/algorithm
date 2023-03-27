@@ -22,23 +22,25 @@
     <div id="box-1"></div>
     <div id="box-2"></div>
     <script>
+      const widthBox = document.getElementById('box-1');
+      const heightBox = document.getElementById('box-2');
       // Create 2 boxes of any size. One box should display the width of the window and right-click should be disabled(no menu should be shown on right click)
-      document.getElementById('box-1').innerHTML = window.innerWidth;
-      document.getElementById('box-1').addEventListener('contextmenu', (e) => {
+      widthBox.innerHTML = window.innerWidth;
+      widthBox.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         alert('Right click is disabled');
       });
       // The other box should display the height of the window and left-click should be disabled. Give an alert if attempted.
-      document.getElementById('box-2').innerHTML = window.innerHeight;
-      document.getElementById('box-2').addEventListener('click', (e) => {
+      heightBox.innerHTML = window.innerHeight;
+      heightBox.addEventListener('click', (e) => {
         e.preventDefault();
         alert('Left click is disabled');
       });
 
-      //The height and width must be updated as the window is resized.
+      //Updated width and height on
       window.addEventListener('resize', () => {
-        document.getElementById('box-1').innerHTML = window.innerWidth;
-        document.getElementById('box-2').innerHTML = window.innerHeight;
+        widthBox.innerHTML = window.innerWidth;
+        heightBox.innerHTML = window.innerHeight;
       });
     </script>
   </body>

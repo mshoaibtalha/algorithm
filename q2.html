@@ -17,20 +17,27 @@
     <div id="color-box"></div>
     <script>
       const changeColorAfter = (delay, color) => {
-        // Write your code here
         return new Promise((resolve, reject) => {
+          if (typeof delay !== 'number' || typeof color !== 'string') {
+            reject(
+              new Error('delay should be a number and color should be a string')
+            );
+          }
           setTimeout(() => {
             document.getElementById('color-box').style.backgroundColor = color;
             resolve();
           }, delay);
         });
       };
+
       changeColorAfter(1000, 'red')
         .then(() => changeColorAfter(2000, 'orange'))
         .then(() => changeColorAfter(3000, 'yellow'))
         .then(() => changeColorAfter(1000, 'green'))
         .then(() => changeColorAfter(4000, 'blue'))
-        .then(() => changeColorAfter(5000, 'indigo'));
+        .then(() => changeColorAfter(5000, 'indigo'))
+        .then(() => changeColorAfter('yieri', 'indigo'))
+        .catch((error) => console.error(error));
     </script>
   </body>
 </html>

@@ -17,24 +17,27 @@
     <div id="color-box"></div>
     <script>
       const changeColorAfter = (delay, color) => {
-        // Write your code here
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            document.getElementById('color-box').style.backgroundColor = color;
-            resolve();
-          }, delay);
-        });
+        if (typeof delay !== 'number' || typeof color !== 'string') {
+          throw new Error(
+            'Invalid arguments: delay should be a number and color should be a string'
+          );
+        }
+        setTimeout(() => {
+          document.getElementById('color-box').style.backgroundColor = color;
+        }, delay);
       };
 
-      const asyncWay = async () => {
+      const asyncColorChange = async () => {
         await changeColorAfter(1000, 'red');
         await changeColorAfter(2000, 'orange');
         await changeColorAfter(3000, 'yellow');
         await changeColorAfter(1000, 'green');
         await changeColorAfter(4000, 'blue');
         await changeColorAfter(5000, 'indigo');
+        await changeColorAfter('hkds', 'indigo');
       };
-      asyncWay();
+
+      asyncColorChange();
     </script>
   </body>
 </html>
