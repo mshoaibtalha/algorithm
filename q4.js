@@ -62,17 +62,12 @@ console.log('The highest rated TV show is:', highestRatedShow.title);
 // Find the second highest rated TV show
 const secondHighestRatedShow = tvShows.reduce(
   (acc, show) => {
-    if (show.score > acc.score) {
-      if (
-        show.score > highestRatedShow.score ||
-        (show.score === highestRatedShow.score &&
-          show.numRatings > highestRatedShow.numRatings)
-      ) {
-        return highestRatedShow;
-      }
-      return show;
-    }
-    if (show.score === acc.score && show.numRatings > acc.numRatings) {
+    if (
+      (show.score < highestRatedShow.score && show.score > acc.score) ||
+      (show.score === highestRatedShow.score &&
+        show.numRatings < highestRatedShow.numRatings &&
+        show.numRatings > acc.numRatings)
+    ) {
       return show;
     }
     return acc;
